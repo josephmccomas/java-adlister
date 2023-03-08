@@ -1,4 +1,14 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.net.http.HttpClient" %>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.net.http.HttpResponse" %>
+<%@ page import="org.apache.http.NameValuePair" %>
+<%@ page import="org.apache.http.message.BasicNameValuePair" %>
+<%@ page import="org.apache.http.client.entity.UrlEncodedFormEntity" %>
+<%@ page import="org.apache.http.client.methods.HttpPost" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="org.apache.http.HttpEntity" %><%--
   Created by IntelliJ IDEA.
   User: josephmccomas
   Date: 3/8/23
@@ -15,25 +25,41 @@ This form should submit a POST request to /login.jsp
 Inside of login.jsp write some code to check the submmitted values.
 If the username submitted is "admin", and the password is "password",
 redirect the user to the profile page; otherwise, redirect back to the login form.--%>
+
+<%
+    String username = request.getParameter("inputUsername");
+    String password = request.getParameter("inputPassword");
+
+    if (username.matches("admin") && password.matches("password") && username != null && password != null){
+        response.sendRedirect("profile.jsp");
+    }
+%>
+
 <html>
 <head>
-    <link rel="stylesheet" href="src/main/css/stylesheet.css">
     <title>Login</title>
 </head>
-<body>
-<form>
+<body style="background-color: slategrey">
+<form method="post" action="login.jsp">
     <div>
-    <label for="email">Enter your gmail:</label>
-    <input type="email" id="email"
-           pattern=".+@gmail\.com" size="30" required>
+        <label form="username">Enter your username:</label>
+        <input type="text" id="user" name="inputUsername" required>
     </div>
     <div>
         <label for="pass">Password (8 characters minimum):</label>
-        <input type="password" id="pass" name="password"
-               minlength="8" required>
+        <input type="password" id="pass" name="inputPassword" minlength="8" required>
     </div>
     <input type="submit" value="Sign in">
 </form>
+<%--<c:set value="String username = request.getParameter(username)" var="username">--%>
+<%--    <c:set value="String password = request.getParameter(" pass")" var="password">--%>
+<%--    <c:if test="${username} == " admin" && ${password} == "password"">--%>
+<%--    <c:redirect url="/profile.jsp"/>--%>
+<%--    <c:otherwise>--%>
+<%--        <c:redirect url="/login.jsp"/>--%>
+<%--    </c:otherwise>--%>
+
+
 
 </body>
 </html>
