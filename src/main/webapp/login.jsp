@@ -36,6 +36,10 @@ redirect the user to the profile page; otherwise, redirect back to the login for
 %>
 
 <html>
+<jsp:include page="Partials/header.jsp">
+</jsp:include>
+<jsp:include page="Partials/navbar.jsp">
+</jsp:include>
 <head>
     <title>Login</title>
 </head>
