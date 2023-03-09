@@ -11,32 +11,16 @@ import java.io.IOException;
 @WebServlet(name = "pickcolor-servlet", urlPatterns = "/pickcolor")
 
 public class pickcolor_servlet extends HttpServlet {
-    String color = "";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/pickcolor.jsp").forward(request, response);
+        request.getRequestDispatcher("/viewcolor.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String grey = request.getParameter("Grey");
-        String red = request.getParameter("Red");
-        String green = request.getParameter("Green");
-        String cfBlue = request.getParameter("Corn Flower Blue");
+        response.sendRedirect("/viewcolor.jsp");
+        request.getRequestDispatcher("/viewcolor.jsp").forward(request, response);
 
-        if (grey != null){
-            color = "#696969FF";
-        }
-        if (red != null) {
-            color = "#8B0000FF";
-        }
-        if (green != null){
-            color = "#006400FF";
-        }
-        if (cfBlue != null){
-            color = "6495EDFF";
-        }
-        request.setAttribute("pickedcolor", color);
     }
 }
