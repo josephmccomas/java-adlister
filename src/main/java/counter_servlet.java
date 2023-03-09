@@ -1,4 +1,3 @@
-import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +7,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "CounterServlet", urlPatterns = "/counter")
 
-public class CounterServlet extends HttpServlet {
+public class counter_servlet extends HttpServlet {
     private int hitCount;
 
     public void init() {

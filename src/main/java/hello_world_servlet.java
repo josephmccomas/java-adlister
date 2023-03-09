@@ -1,4 +1,3 @@
-import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello-world")
-public class HelloWorldServlet extends HttpServlet {
+public class hello_world_servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
