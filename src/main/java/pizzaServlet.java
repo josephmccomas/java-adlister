@@ -3,15 +3,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.datatransfer.DataFlavor;
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet(name = "pizzaServlet", urlPatterns = "/Pizza_Order")
+@WebServlet(name = "pizzaServlet", urlPatterns = "/pizza-order")
 
 public class pizzaServlet extends HttpServlet {
-private String [] pizza;
+    @Override
+    protected void doGet(HttpServletRequest  request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/pizza_order.jsp").forward(request, response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doGet(request, response);
 
 
     String medium = request.getParameter("medium");
@@ -21,7 +24,29 @@ private String [] pizza;
     String bacon = request.getParameter("bacon");
     String address = request.getParameter("address");
 
+        ArrayList<String> order = new ArrayList<>();
 
-request.getRequestDispatcher("/pizza-order.jsp").forward(request, response);
+        if (medium != null){
+            order.add("medium");
+        }
+        if (large != null){
+            order.add("large");
+        }
+        if (cheese != null){
+            order.add("cheese");
+        }
+        if (pepperoni != null){
+            order.add("pepperoni");
+        }
+        if (bacon != null){
+            order.add("bacon");
+        }
+        if (address != null){
+            order.add(address);
+        }
+
+        System.out.println(order);
+request.setAttribute("order", order);
+request.getRequestDispatcher("/pizza_order.jsp").forward(request, response);
     }
 }

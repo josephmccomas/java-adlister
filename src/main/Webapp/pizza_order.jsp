@@ -9,13 +9,13 @@
 
 <html>
     <head>
+        <jsp:include page="Partials/pizza_header.jsp" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <jsp:include page="../Pizza_Order/Partials/header.jsp">
     </head>
     <body>
         <div>
             <h2>Crust Size</h2>
-            <form method="post" action="../pizzaServlet.java">
+            <form method="post" action="pizza-order">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="medium">
                         <label class="form-check-label" for="defaultCheck1">
