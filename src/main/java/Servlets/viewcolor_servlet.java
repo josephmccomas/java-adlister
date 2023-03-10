@@ -1,27 +1,30 @@
 package Servlets;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Serializable;
 
 @WebServlet(name = "viewcolor-servlet", urlPatterns = "viewcolor")
-public class viewcolor_servlet extends HttpServlet {
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+
+public class viewcolor_servlet extends HttpServlet implements Serializable {
     String color = "";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     @Override
