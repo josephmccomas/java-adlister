@@ -16,6 +16,14 @@ public class viewcolor_servlet extends HttpServlet {
 
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String grey = request.getParameter("Grey");
