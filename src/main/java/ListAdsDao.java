@@ -1,6 +1,16 @@
+
+import lombok.*;
+
+import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
 import java.util.List;
 
+@WebServlet
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class ListAdsDao implements Ads {
     private List<Ad> ads;
 

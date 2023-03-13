@@ -1,23 +1,26 @@
 package Servlets;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/Ads/index.jsp")
+@WebServlet(name = "AdsServlet", urlPatterns = "/ads")
 
-public class ListAdsDao extends HttpServlet {
+public class AdsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/Ads.jsp").forward(request, response);
+        List<Ad> ads = DaoFactory.getAdsDao().all();
+        request.getRequestDispatcher("/ads/index.jsp");
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
 }
