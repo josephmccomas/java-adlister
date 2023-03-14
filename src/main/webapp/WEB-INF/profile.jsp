@@ -19,7 +19,7 @@
                 if(cookie.getName().equals("user")) userName = cookie.getValue();
             }
         }
-        if(userName == null) response.sendRedirect("/WEB-INF/login");
+        if(userName == null) response.sendRedirect("/login");
     %>
     <div>
     <h3>Hi <%=userName %>, Login successful.</h3>
