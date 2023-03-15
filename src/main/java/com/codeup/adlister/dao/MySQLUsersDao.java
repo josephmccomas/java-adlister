@@ -3,9 +3,7 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class MySQLUsersDao implements Users{
 
@@ -21,6 +19,18 @@ public class MySQLUsersDao implements Users{
             );
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+    public User findByUsername(String username){
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM users where name = ?");
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return user;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding username" + user, e);
         }
     }
 
