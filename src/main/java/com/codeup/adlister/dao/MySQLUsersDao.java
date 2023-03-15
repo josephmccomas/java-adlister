@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
@@ -28,15 +29,19 @@ public class MySQLUsersDao implements Users{
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             rs.next();
+            User user = extractUser(rs);
             return user;
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding username" + user, e);
+            throw new RuntimeException("Error finding username", e);
         }
     }
-
-    @Override
-    public User findByUsername(String username) {
-        return null;
+    private User extractUser(ResultSet rs) throws SQLException {
+        return new User(
+                rs.getLong("id"),
+                rs.getString("username"),
+                rs.getString("email"),
+                rs.getString("password")
+        );
     }
 
     @Override
