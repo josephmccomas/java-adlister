@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
             return;
         }
-        request.getRequestDispatcher("/login").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
     // TODO: find a record in your database that matches the submitted password
     // TODO: make sure we find a user with that username
@@ -29,18 +29,11 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        boolean validAttempt = false;
-        User user = null;
-        try{
-            user = DaoFactory.getUsersDao().findByUsername(username);
-            if (user.getPassword().equals(password)){
-                validAttempt = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (validAttempt){
-            request.getSession().setAttribute("user", user);
+        boolean validAttempt = username.equals("bob") && password.equals("1234");
+        Ads dao = DaoFactory.getAdsDao();
+        MySQLAdsDao dbDao = (MySQLAdsDao) dao;
+        if (validAttempt) {
+            request.getSession().setAttribute("user", username);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");

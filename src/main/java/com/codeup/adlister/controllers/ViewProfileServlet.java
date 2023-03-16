@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
+@WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile.jsp")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
-            response.sendRedirect("login");
+            response.sendRedirect("/login.jsp");
             return;
         }
-        request.getRequestDispatcher("profile").forward(request, response);
+        request.getRequestDispatcher("/profile.jsp").forward(request, response);
     }
 }
