@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
+@WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
+        request.getRequestDispatcher("create")
             .forward(request, response);
     }
 
@@ -24,7 +24,6 @@ public class CreateAdServlet extends HttpServlet {
             request.getParameter("description")
         );
         DaoFactory.getAdsDao().insert(ad);
-        response.sendRedirect("/ads");
-        return 0;
+        response.sendRedirect("ad_index");
     }
 }

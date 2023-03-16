@@ -1,7 +1,9 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.dao.Users;
+import com.codeup.adlister.dao.ListAdsDao;
+import com.codeup.adlister.dao.MySQLAdsDao;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -18,7 +20,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/login").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
