@@ -2,10 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.dao.ListAdsDao;
 import com.codeup.adlister.dao.MySQLAdsDao;
-import com.codeup.adlister.models.User;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,13 +27,13 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         boolean validAttempt = username.equals("bob") && password.equals("1234");
-        Ads dao = DaoFactory.getAdsDao();
-        MySQLAdsDao dbDao = (MySQLAdsDao) dao;
+//        Ads dao = DaoFactory.getAdsDao();
+//        MySQLAdsDao dbDao = (MySQLAdsDao) dao;
         if (validAttempt) {
             request.getSession().setAttribute("user", username);
-            response.sendRedirect("/profile");
+            response.sendRedirect("/profile.jsp");
         } else {
-            response.sendRedirect("/login");
+            response.sendRedirect("/login.jsp");
         }
     }
 }
